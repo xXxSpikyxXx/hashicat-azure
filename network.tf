@@ -1,6 +1,7 @@
-provider "azurerm" {
-  features {}
-}
+module "network" {
+  source  = "app.terraform.io/PCSSecurity/network/azurerm"
+  version = "3.5.0"
+  # insert required variables here
 
 resource "azurerm_resource_group" "example" {
   name     = "${var.prefix}-workshop"
@@ -26,4 +27,5 @@ module "network" {
   }
 
   depends_on = [azurerm_resource_group.example]
+}
 }
